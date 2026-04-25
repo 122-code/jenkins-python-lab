@@ -13,7 +13,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo "Running tests..."
-                bat 'python -m pytest --junitxml=report.xml'
+                bat 'set PYTHONPATH=%cd% && python -m pytest --junitxml=report.xml'
             }
         }
 
