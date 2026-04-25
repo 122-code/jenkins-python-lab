@@ -11,17 +11,19 @@ pipeline {
         }
 
         stage('Run Tests') {
-            steps {
-                echo "Running tests..."
-                bat 'set PYTHONPATH=%cd% && python -m pytest --junitxml=report.xml'
-            }
-        }
+    steps {
+        echo "Running tests..."
 
-        stage('Publish Report') {
-            steps {
-                echo "Publishing report..."
-                junit 'report.xml'
-            }
-        }
+        bat '''
+        echo ===== WORKSPACE CHECK =====
+        cd
+        dir
+
+        echo ===== SETTING PYTHON PATH =====
+        set PYTHONPATH=%WORKSPACE%
+
+        echo ===== RUNNING TESTS =====
+        python -m pytest -v --junitxml=report.xml
+        '''
     }
 }
