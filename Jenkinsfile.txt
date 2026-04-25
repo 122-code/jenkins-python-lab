@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo "📥 Checking out code from GitHub..."
-                git branch: 'main', url: 'https://github.com/YOUR-USERNAME/jenkins-python-lab.git'
+                git branch: 'main', url: 'https://github.com/122-code/jenkins-python-lab.git'
             }
         }
 
